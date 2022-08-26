@@ -1,0 +1,70 @@
+611  a drone flying
+612  a truck being driven in the daytime
+613  a door being opened by someone
+614  a woman riding or holding a bike outdoors
+615  a person smoking a cigarette outdoors
+616  a woman wearing a red dress outside in the daytime
+617  one or more picnic tables outdoors
+618  coral reef underwater
+619  one or more art pieces on a wall
+620  a person with a painted face or mask
+621  person in front of a graffiti painted on a wall
+622  a person in a tent
+623  a person wearing shorts outdoors
+624  a person in front of a curtain indoors
+625  a person wearing a backpack
+626  a race car driver racing a car
+627  a person holding a tool and cutting something
+628  a man and a woman holding hands
+629  a black man singing
+630  a man and a woman hugging each other
+631  a man and a woman dancing together indoors
+632  a person running in the woods
+633  a group of people walking on the beach
+634  a woman and a little boy both visible during daytime
+635  a bald man
+636  a man and a baby both visible
+637  a shirtless man standing up or walking outdoors
+638  one or more birds in a tree
+639  for inside views of a small airplane flying
+640  a red hat or cap
+641  an aerial view of buildings near water in the daytime
+642  a person paddling kayak in the water
+643  people dancing or singing while wearing costumes outdoors
+644  sailboats in the water
+645  a person wearing a necklace 
+646  a woman sitting on the floor
+647  people or cars moving on a dirt road
+648  a man in blue jeans outdoors
+649  someone jumping while snowboarding
+650  one or more people drinking wine
+651  one or more people skydiving
+652  a little boy smiling
+653  group of people clapping
+654  one or more persons exercising in a gym
+655  one or more persons standing in a body of water
+656  a long haired man
+657  a woman with short hair indoors
+658  two or more people under a tree
+659  a church from the inside
+660  train tracks during the daytime
+591  a person holding an opened umbrella outdoors
+592  a person reading a paper including newspaper
+593  one or more women models on a catwalk demonstrating clothes
+594  people doing yoga
+595  a person sleeping
+596  fishermen fishing on a boat
+597  a shark swimming under the water
+598  a man in a clothing store
+599  a person in a bedroom
+600  a person's shadow
+601  a person jumping with a motorcycle
+602  a person jumping with a bicycle
+603  people hiking
+604  bride and groom kissing
+605  a person skateboarding
+606  people queuing
+607  two people kissing who are not bride and groom
+608  two people talking to each other inside a moving car
+609  people walking across (not down) a street in a city
+610  electrical power lines
