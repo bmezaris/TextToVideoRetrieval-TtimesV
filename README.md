@@ -1,10 +1,10 @@
 # Are all combinations equal? Combining textual and visual features with multiple space learning for text-based video retrieval
 
-## Pytorch Implementation of the $T \times V$ model, presented on CVEU workshop@ECCV 2022. Based on [ATT-ATV](https://github.com/bmezaris/AVS_dual_encoding_attention_network) and [SEA](https://github.com/li-xirong/sea) implementations. 
+## Pytorch Implementation of the $T \times V$ model, presented at the CVEU workshop@ECCV 2022. Based on previous [ATT-ATV](https://github.com/bmezaris/AVS_dual_encoding_attention_network) and [SEA](https://github.com/li-xirong/sea) implementations. 
 
 - From D. Galanopoulos, V. Mezaris, **"Are all combinations equal? Combining textual and visual features with multiple space learning for text-based video retrieval"**, Proc. European Conference on Computer Vision Workshops (ECCVW), Oct. 2022.
 - Text-based video retrieval software. The datasets of the Ad-hoc Video Search (AVS) Task of NIST's TRECVID (a typical benchmarking activity for evaluating such methods) are used for evaluation.
-- The software provided in the present repository can be used for training the $T \times V$ model, using multiple textual and visual features.
+- The software provided in the present repository can be used for training the proposed $T \times V$ model, using multiple textual and visual features.
 
 ## Main dependencies
 Developed, checked, and verified on an `Ubuntu 20.04.3` PC with an `NVIDIA RTX3090` GPU. Main packages required:
@@ -15,7 +15,7 @@ Developed, checked, and verified on an `Ubuntu 20.04.3` PC with an `NVIDIA RTX30
 ## Data
 
 ### Datasets
-In our AVS experiments, the  $T \times V$ model is trained using a combination of four large-scale video captioning datasets: [MSR-VTT](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/), [TGIF](https://github.com/raingo/TGIF-Release), [ActivityNet](https://cs.stanford.edu/people/ranjaykrishna/densevid/) and [Vatex](https://eric-xw.github.io/vatex-website/index.html). For validation purposes, during training, we use the Video-to-Text
+In our AVS experiments, the proposed $T \times V$ model is trained using a combination of four large-scale video captioning datasets: [MSR-VTT](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/), [TGIF](https://github.com/raingo/TGIF-Release), [ActivityNet](https://cs.stanford.edu/people/ranjaykrishna/densevid/) and [Vatex](https://eric-xw.github.io/vatex-website/index.html). For validation purposes, during training, we use the Video-to-Text
 Description dataset of TRECVID 2016 (tv2016train). To evaluate the performance, the IACC.3 and V3C1 TRECVID AVS datasets are used. To download TRECVID datasets please refer to the original [TRECVID AVS](https://www-nlpir.nist.gov/projects/tv2022/avs.html) page.
 
 ### Frame-level video features
