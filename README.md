@@ -37,7 +37,7 @@ wget http://data.mxnet.io/models/imagenet-11k/resnet-152/resnet-152-0000.params
 2. [ResNext101 WSL-Images](https://github.com/facebookresearch/WSL-Images)
 3. [CLIP](https://github.com/openai/CLIP) 
 
-Alternatively, pre-calculated visual features for the MSRT-VTT, TGIF and tv2016train datasets (different features from the above) can be downloaded from ["Ad-hoc Video Search GitHub repository"](https://github.com/li-xirong/avs).
+Alternatively, some pre-calculated visual features for the MSRT-VTT, TGIF and tv2016train datasets (beware: these are different features from the above-described that we used!) can be downloaded from ["Ad-hoc Video Search GitHub repository"](https://github.com/li-xirong/avs).
 
 ### Data format
 The features extracted as described above must be stored as a txt file of the following format:
