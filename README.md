@@ -115,7 +115,7 @@ evalCollection=v3c1
 CUDA_VISIBLE_DEVICES=0 python TtimesV_V3C1_evaluation.py.py $evalCollection --evalpath $evalpath --rootpath $rootpath --logger_name $logger_name
 ```
 
-The evaluation scripts produces files in the proper format for the `sample_eval.pl` evaluation script. The `sample_eval.pl` produces a files containg results in various evaluation measures.
+The evaluation scripts produces files in the proper format for the `sample_eval.pl` evaluation script. The `sample_eval.pl` produces a file containing results according to various evaluation measures.
 ## Citation
 
 If you find our work, code or models, useful in your work, please cite the following publication:
