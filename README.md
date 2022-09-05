@@ -61,7 +61,7 @@ collection=tgif-msrvtt10k
 
 dim=2048
 resultdir=$rootpath/$collection/FeatureData/$featname
-featurefile=${feat_dir}/id.feature.txt
+featurefile=${resultdir}/id.feature.txt
 python simpleknn/txt2bin.py $dim $featurefile 0 $resultdir
 
 python util/get_frameInfo.py --collection $collection --feature $featname
