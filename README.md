@@ -40,24 +40,25 @@ wget http://data.mxnet.io/models/imagenet-11k/resnet-152/resnet-152-0000.params
 Alternatively, some pre-calculated visual features for the MSRT-VTT, TGIF and tv2016train datasets (beware: these are different features from the above-described that we used!) can be downloaded from ["Ad-hoc Video Search GitHub repository"](https://github.com/li-xirong/avs).
 
 ### Data format
-The features extracted as described above must be stored as a txt file of the following format (a separate txt file for each of the overall training, validation, evaluation datasets; this file containing all features for all videos of the training or validation or evaluation dataset):
+Every frame-level video feature extracted as described above must be stored as a separate txt file of the following format:
 
 ```
-<ShotID_1_frameID_01> <feat_1> <feat_2> ... <feat_N>
-<ShotID_1_frameID_02> <feat_1> <feat_2> ... <feat_N>
+<ShotID_1_frameID_01> <dim_1> <dim_2> ... <dim_N>
+<ShotID_1_frameID_02> <dim_1> <dim_2> ... <dim_N>
 .
 .
 .
-<ShotID_M_frameID_K> <feat_1> <feat_2> ... <feat_N>
+<ShotID_M_frameID_K> <dim_1> <dim_2> ... <dim_N>
 ```
+Also, different txt files must be created for each available dataset (e.g., the overall training collection, validation, and evaluation).
 
-Our network reads the visual features in a binary format. In order to convert text files (e.g. file "id.feature.txt") into binary files, run the following code:
+Our network reads the visual features in a binary format. The script below converts a text file into binary format. In this example the text file `id.feature.txt`, which contains the frame-level features `resnext101_32x16d_wsl,flatten0_output,os` with dimension `N=2048`  from the training dataset `tgif_msr-vtt_activity_vatex` is converted into the binary format.
 
 ```
 rootpath=$HOME/TtimesV
 
 featname=resnext101_32x16d_wsl,flatten0_output,os
-collection=tgif-msrvtt10k
+collection=tgif_msr-vtt_activity_vatex
 
 dim=2048
 resultdir=$rootpath/$collection/FeatureData/$featname
@@ -66,10 +67,23 @@ python simpleknn/txt2bin.py $dim $featurefile 0 $resultdir
 
 python util/get_frameInfo.py --collection $collection --feature $featname
 ```
-Finally, for every dataset (training, validation or evaluation) the binary files should be stored as in the following structure example:
+The successful execution of the above script produces the following files:  `feature.bin`, `id.txt`, `shape.txt`, and `video2frames.txt`
+
+For every dataset, a txt file `<collection>.caption.txt` with the captions of every video shot should be created in the following format:
+
+```
+<ShotID_1>#enc#<cap_id> <caption text>
+<ShotID_1>#enc#<cap_id> <caption text>
+.
+.
+.
+<ShotID_M>#enc#<cap_id> <caption text>
+```
+
+Finally, for every dataset (training, validation or evaluation) the required files should be stored as in the following structure example:
 ```
 rootpath
-└── TGIF_MSR_VTT_Activity_Vatex
+└── tgif_msr-vtt_activity_vatex
     ├── FeatureData
     │   └── resnext101_32x16d_wsl,flatten0_output,os
     │       ├── feature.bin
@@ -79,13 +93,14 @@ rootpath
     └── TextData
         └── TGIF_MSR_VTT_Activity_Vatex.caption.txt
 ```
+
 ## Training
 To train a $T \times V$ model, please follow the steps below:
 
 ```
 rootpath=$HOME/TtimesV
 
-trainCollection=tgif-msrvtt10k
+trainCollection=tgif_msr-vtt_activity_vatex
 valCollection=tv2016train
 testCollection=tv2016train
 
@@ -98,7 +113,11 @@ learning_rate=0.0001
 
 CUDA_VISIBLE_DEVICES=0 python TtimesV_trainer.py $trainCollection $valCollection $testCollection --learning_rate $learning_rate --selected_text_feas $text_features --overwrite 1 --visual_feature $visual_features --n_caption $n_caption --optimizer $optimizer --num_epochs 20 --rootpath $rootpath --cv_name DG_TtimesV 
 ```
-If training completed successfully you will see the created trained model `model_best.pth.tar` into the `logger_name` folder:
+If training completed successfully you will see the created trained model `model_best.pth.tar` into the `logger_name` folder.
+
+To train a $T \times V$ model for the MSR-VTT datasets, please change the `trainCollection` and `testCollection` variables to match with the MSR-VTT training and testing datasets.
+
+Please note that in [1] we train our network using six configurations of the same architecture with different training parameters. Specifically, each model is trained using two optimizers, i.e., Adam and RMSprop, and three learning rates ($1\times10^4$, $5\times10^5$, $1\times10^5$). 
 
 ## Evaluation
 To evaluate the trained model on the IACC.3 and V3C1 datasets for the TRECVID AVS 2016/2017/2018 and 2019/2020/2021 topics please follow the next steps:
@@ -106,7 +125,7 @@ To evaluate the trained model on the IACC.3 and V3C1 datasets for the TRECVID AV
 ```
 rootpath=$HOME/TtimesV
 evalpath=$rootpath
-logger_name=$rootpath/
+logger_name=$rootpath/<the path where the `model_best.pth.tar` is stored>
 
 evalCollection=iacc.3
 CUDA_VISIBLE_DEVICES=0 python TtimesV_iacc3_evaluation.py.py $evalCollection --evalpath $evalpath --rootpath $rootpath --logger_name $logger_name
@@ -115,12 +134,24 @@ evalCollection=v3c1
 CUDA_VISIBLE_DEVICES=0 python TtimesV_V3C1_evaluation.py.py $evalCollection --evalpath $evalpath --rootpath $rootpath --logger_name $logger_name
 ```
 
-The evaluation scripts produces files in the proper format for the `sample_eval.pl` evaluation script. The `sample_eval.pl` produces a file containing results according to various evaluation measures.
+The evaluation scripts produce files in the proper format for the `sample_eval.pl` evaluation script. The `sample_eval.pl` produces a file containing results according to various evaluation measures.
+
+Also, to evaluate our models for the `MSR-VTT` testing datasets, please follow the next steps:
+
+```
+rootpath=$HOME/TtimesV
+evalpath=$rootpath
+logger_name=$rootpath/<the path where the `model_best.pth.tar` is stored>
+n_caption=1
+
+evalCollection=MSR_VTT_1k-A_test
+CUDA_VISIBLE_DEVICES=0 python TtimesV_tester.py $evalCollection --evalpath $evalpath --rootpath $rootpath --logger_name $logger_name --n_caption $n_caption
+ ```
 ## Citation
 
 If you find our work, code or models, useful in your work, please cite the following publication:
 
-D. Galanopoulos, V. Mezaris, "<b>Are all combinations equal? Combining textual and visual features with multiple space learning for text-based video retrieval</b>", Proc. European Conference on Computer Vision Workshops (ECCVW), Oct. 2022.
+[1] D. Galanopoulos, V. Mezaris, "<b>Are all combinations equal? Combining textual and visual features with multiple space learning for text-based video retrieval</b>", Proc. European Conference on Computer Vision Workshops (ECCVW), Oct. 2022.
 
 BibTeX:
 
