@@ -40,7 +40,7 @@ wget http://data.mxnet.io/models/imagenet-11k/resnet-152/resnet-152-0000.params
 Alternatively, some pre-calculated visual features for the MSRT-VTT, TGIF and tv2016train datasets (beware: these are different features from the above-described that we used!) can be downloaded from ["Ad-hoc Video Search GitHub repository"](https://github.com/li-xirong/avs).
 
 ### Data format
-The features extracted as described above must be stored as a txt file of the following format (all features for all videos stored in a single txt):
+The features extracted as described above must be stored as a txt file of the following format (all features for all videos stored in a single txt; a separate txt file for each of the overall training, validation, evaluation datasets)):
 
 ```
 <ShotID_1_frameID_01> <feat_1> <feat_2> ... <feat_N>
@@ -51,7 +51,7 @@ The features extracted as described above must be stored as a txt file of the fo
 <ShotID_M_frameID_K> <feat_1> <feat_2> ... <feat_N>
 ```
 
-Our network reads the visual features in a binary format. In order to convert text files into binary files, run the following code:
+Our network reads the visual features in a binary format. In order to convert text files (e.g. file "id.feature.txt") into binary files, run the following code:
 
 ```
 rootpath=$HOME/TtimesV
