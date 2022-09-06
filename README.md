@@ -117,11 +117,11 @@ CUDA_VISIBLE_DEVICES=0 python TtimesV_trainer.py $trainCollection $valCollection
 ```
 Please refer to the arguments of the `TtimesV_trainer.py` file to change model and training parameters.
 
-If training completed successfully you will see the created trained model `model_best.pth.tar` into the `logger_name` folder.
+If training is completed successfully you will see the created trained model `model_best.pth.tar` into the `logger_name` folder.
 
 To train a $T \times V$ model for the MSR-VTT datasets, please change the `trainCollection` and `testCollection` variables to match with the MSR-VTT training and testing datasets.
 
-Please note that in [1] we train our network using six configurations of the same architecture with different training parameters. Specifically, each model is trained using two optimizers, i.e., Adam and RMSprop, and three learning rates ( $1\times10^4$, $5\times10^5$, $1\times10^5$ ). 
+Please note that in [1] we train our network using six configurations of the same architecture with different training parameters, and then we combine the results of the six configurations. Specifically, each model is trained using two optimizers, i.e., Adam and RMSprop, and three learning rates ( $1\times10^4$, $5\times10^5$, $1\times10^5$ ). 
 
 ## Evaluation
 To evaluate the trained model on the IACC.3 and V3C1 datasets for the TRECVID AVS 2016/2017/2018 and 2019/2020/2021 topics please follow the next steps:
