@@ -124,7 +124,7 @@ To train a $T \times V$ model for the MSR-VTT datasets, please change the `train
 Please note that in [1] we train our network using six configurations of the same architecture with different training parameters, and then we combine the results of the six configurations. Specifically, each model is trained using two optimizers, i.e., Adam and RMSprop, and three learning rates ( $1\times10^4$, $5\times10^5$, $1\times10^5$ ). 
 
 ## Evaluation
-To evaluate the trained model on the IACC.3 and V3C1 datasets for the TRECVID AVS 2016/2017/2018 and 2019/2020/2021 topics please follow the next steps:
+To evaluate a trained model on the IACC.3 and V3C1 datasets for the TRECVID AVS 2016/2017/2018 and 2019/2020/2021 topics, you can follow the steps below:
 
 ```
 rootpath=$HOME/TtimesV
@@ -140,7 +140,7 @@ CUDA_VISIBLE_DEVICES=0 python TtimesV_V3C1_evaluation.py.py $evalCollection --ev
 
 The evaluation scripts produce results files in the correct format for subsequently processing with the `sample_eval.pl` evaluation script. The `sample_eval.pl` will produce a file reporting the overal results according to various evaluation measures.
 
-Also, to evaluate our models for the `MSR-VTT` testing datasets, please follow the next steps:
+Similarly, to evaluate a MSR-VTT-trained model on the `MSR-VTT` testing datasets, you can follow the steps below:
 
 ```
 rootpath=$HOME/TtimesV
