@@ -138,7 +138,7 @@ evalCollection=v3c1
 CUDA_VISIBLE_DEVICES=0 python TtimesV_V3C1_evaluation.py.py $evalCollection --evalpath $evalpath --rootpath $rootpath --logger_name $logger_name
 ```
 
-The evaluation scripts produce files in the proper format for the `sample_eval.pl` evaluation script. The `sample_eval.pl` produces a file containing results according to various evaluation measures.
+The evaluation scripts produce results files in the correct format for subsequently processing with the `sample_eval.pl` evaluation script. The `sample_eval.pl` will produce a file reporting the overal results according to various evaluation measures.
 
 Also, to evaluate our models for the `MSR-VTT` testing datasets, please follow the next steps:
 
