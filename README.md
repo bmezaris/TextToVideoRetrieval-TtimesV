@@ -18,6 +18,8 @@ Developed, checked, and verified on an `Ubuntu 20.04.3` PC with an `NVIDIA RTX30
 In our AVS experiments, the proposed $T \times V$ model is trained using a combination of four large-scale video captioning datasets: [MSR-VTT](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/), [TGIF](https://github.com/raingo/TGIF-Release), [ActivityNet](https://cs.stanford.edu/people/ranjaykrishna/densevid/) and [Vatex](https://eric-xw.github.io/vatex-website/index.html). For validation purposes, during training, we use the Video-to-Text
 Description dataset of TRECVID 2016 (tv2016train). To evaluate the performance, the IACC.3 and V3C1 TRECVID AVS datasets are used. To download TRECVID datasets please refer to the original [TRECVID AVS](https://www-nlpir.nist.gov/projects/tv2022/avs.html) page.
 
+In our MSR-VTT experiments, we experimented with two versions of this dataset: MST-VTT-full and MSR-VTT-1k-A. For both versions, the proposed $T \times V$ model is trained on the training portion of the dataset and evaluated on the testing portion, respectively.
+
 ### Frame-level video features
 We assume that frame-level video features have been extracted. In our experiments, we utilized three different visual features:
 
@@ -113,6 +115,8 @@ learning_rate=0.0001
 
 CUDA_VISIBLE_DEVICES=0 python TtimesV_trainer.py $trainCollection $valCollection $testCollection --learning_rate $learning_rate --selected_text_feas $text_features --overwrite 1 --visual_feature $visual_features --n_caption $n_caption --optimizer $optimizer --num_epochs 20 --rootpath $rootpath --cv_name DG_TtimesV 
 ```
+Please refer to the arguments of the `TtimesV_trainer.py` file to change model and training parameters.
+
 If training completed successfully you will see the created trained model `model_best.pth.tar` into the `logger_name` folder.
 
 To train a $T \times V$ model for the MSR-VTT datasets, please change the `trainCollection` and `testCollection` variables to match with the MSR-VTT training and testing datasets.
