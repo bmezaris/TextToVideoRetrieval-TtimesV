@@ -28,7 +28,7 @@ We assume that frame-level video features have been extracted. In our experiment
 3. CLIP ViT-B/32
 
 
-Please refer to the following to extract visual features.
+Please refer to the following to extract visual features:
 
 1. ResNet-152 from the MXNet model zoo
 
