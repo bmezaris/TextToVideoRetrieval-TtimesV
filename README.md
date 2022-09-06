@@ -60,16 +60,16 @@ rootpath=$HOME/TtimesV
 featname=resnext101_32x16d_wsl,flatten0_output,os
 collection=tgif_msr-vtt_activity_vatex
 
-dim=2048
+N=2048
 resultdir=$rootpath/$collection/FeatureData/$featname
 featurefile=${resultdir}/id.feature.txt
-python simpleknn/txt2bin.py $dim $featurefile 0 $resultdir
+python simpleknn/txt2bin.py $N $featurefile 0 $resultdir
 
 python util/get_frameInfo.py --collection $collection --feature $featname
 ```
 The successful execution of the above script produces the following files:  `feature.bin`, `id.txt`, `shape.txt`, and `video2frames.txt`
 
-For every dataset, a txt file `<collection>.caption.txt` with the captions of every video shot should be created in the following format:
+For every dataset, a txt file `<collection>.caption.txt` with the captions of every video shot should be created and stored in the `TextData` folder in the following format:
 
 ```
 <ShotID_1>#enc#<cap_id> <caption text>
@@ -91,7 +91,7 @@ rootpath
     │       ├── shape.txt
     │       └── video2frames.txt
     └── TextData
-        └── TGIF_MSR_VTT_Activity_Vatex.caption.txt
+        └── tgif_msr-vtt_activity_vatex.caption.txt
 ```
 
 ## Training
