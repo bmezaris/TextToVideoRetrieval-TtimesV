@@ -2,7 +2,7 @@
 
 ## Pytorch Implementation of the $T \times V$ model, presented at the CVEU workshop@ECCV 2022. Based on previous [ATT-ATV](https://github.com/bmezaris/AVS_dual_encoding_attention_network) and [SEA](https://github.com/li-xirong/sea) implementations. 
 
-- From D. Galanopoulos, V. Mezaris, **"Are all combinations equal? Combining textual and visual features with multiple space learning for text-based video retrieval"**, Proc. European Conference on Computer Vision Workshops (ECCVW), Oct. 2022.
+- From D. Galanopoulos, V. Mezaris, **"Are all combinations equal? Combining textual and visual features with multiple space learning for text-based video retrieval"**, Proc. European Conference on Computer Vision Workshops (ECCVW), Oct. 2022. https://cveu.github.io/2022/papers/0010.pdf
 - Text-based video retrieval software. The datasets of the Ad-hoc Video Search (AVS) Task of NIST's TRECVID (a typical benchmarking activity for evaluating such methods) are used for evaluation.
 - The software provided in the present repository can be used for training the proposed $T \times V$ model, using multiple textual and visual features.
 
